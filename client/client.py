@@ -43,16 +43,19 @@ class client_receive(threading.Thread):
         while not self.stop:
             global i
             x,y=stdscr.getmaxyx()
-            if(i==x-6):
+            if(i==x-8):
                 i=0
                 stdscr.clear()
                 stdscr.addstr(x-4,0,"_"*y)
+                stdscr.addstr(x-2,0," >>>  ")
+                stdscr.addstr(x-5,0,"Press ctrl + c to quit chat safely")
+                stdscr.refresh()
             try:
                 message = self.message_receive()
             except IOError:
                 print "Server has closed PyChat window ! Press ctrl +c to exit"
                 f.close()
-                sys.exit(1)
+                sys.exit()
             try:
             	speak = 'espeak -p 90 -s 120 "'+ message +'"';
                 subprocess.call(speak,shell=True)
@@ -68,10 +71,18 @@ class client_receive(threading.Thread):
                 f.write(log + " || " + client_receive.server_name + " : " +message + "\n")
             except ValueError:
                 print "Server has closed PyChat window ! Press ctrl +c to exit"
+                f.close()
                 sys.exit(1)
             stdscr.refresh()
             stdscr.addstr(x-2,0," >>>  ")
             i+=1
+            if(i==x-8):
+                i=0
+                stdscr.clear()
+                stdscr.addstr(x-4,0,"_"*y)
+                stdscr.addstr(x-2,0," >>>  ")
+                stdscr.addstr(x-5,0,"Press ctrl + c to quit chat safely")
+                stdscr.refresh()
             if(len(message)>y-len(client_receive.server_name)-5):
                 i+=(len(message)+len(client_receive.server_name)+5)/y  
             stdscr.refresh()
@@ -79,9 +90,14 @@ class client_receive(threading.Thread):
 # FUNCTION WHICH HELPS IN SENDING THE MESSAGE
 def message_send(conn,client_name,msg):
     global i
-    if(i==x-6):
+    x,y=stdscr.getmaxyx()
+    if(i==x-8):
         i=0
         stdscr.clear()
+        stdscr.addstr(x-4,0,"_"*y)
+        stdscr.addstr(x-2,0," >>>  ")
+        stdscr.addstr(x-5,0,"Press ctrl + c to quit chat safely")
+        stdscr.refresh()
     curses.start_color()
     curses.use_default_colors()
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
@@ -92,6 +108,13 @@ def message_send(conn,client_name,msg):
     if(len(msg)>y-len(client_name)-5):
         i+=(len(msg)+len(client_name)+5)/y
     i+=1
+    if(i==x-8):
+        i=0
+        stdscr.clear()
+        stdscr.addstr(x-4,0,"_"*y)
+        stdscr.addstr(x-2,0," >>>  ")
+        stdscr.addstr(x-5,0,"Press ctrl + c to quit chat safely")
+        stdscr.refresh()
     if len(msg)<=999 and len(msg)>0:
         conn.send(str(len(msg)))
         if conn.recv(2) == 'OK':
