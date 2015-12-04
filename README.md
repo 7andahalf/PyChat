@@ -6,6 +6,7 @@ Project by: Aditya Thiruvengadam, IIIT Bangalore
 
 
 <b>KEY FEATURES:</b><br/>
+	-> Enables simultaneous chat thru multi-threading <br/>
 	-> Connects over LAN / WLAN using IP Address and Port<br/>
 	-> Reads out messages as and when you receive a message<br/>
 	-> User can create chat nicknames<br/>
