@@ -10,18 +10,18 @@ from Tkinter import *
 import tkMessageBox,Tkinter
 import util
 
-DATA_BUFFER= lambda x:x
+DATA_BUFFER = lambda x:x
 f = open("chat history.txt","a")
 i=0
 
 # THREADED CLASS FOR RECEIVING
-class server_receive(threading.Thread):
-    def __init__(self,conn,client_name, m):
+class client_receive(threading.Thread):
+    def __init__(self,conn,server_name, m):
         threading.Thread.__init__(self)
         self.conn = conn
-        self.stop=False
+        self.stop = False
         self.m = m
-        server_receive.client_name = client_name
+        client_receive.server_name = server_name
 
     def message_receive(self):
         data = self.conn.recv(DATA_BUFFER(1024))
@@ -33,37 +33,24 @@ class server_receive(threading.Thread):
         while not self.stop:
             global i
             try:
-            	message = self.message_receive()
+                message = self.message_receive()
             except IOError:
-            	print "Client has closed PyChat window ! Press ctrl +c to exit"
+                print "Server has closed PyChat window ! Press ctrl +c to exit"
                 f.close()
-            	sys.exit()
+                sys.exit()
             frame = self.m.mframe
             subFrame = Frame(frame, height = 20, width = 460)
             subFrame.grid(row=i,column=0)
-            Label(subFrame,text=server_receive.client_name+" : "+str(message)).place(x=5,y=0)
+            Label(subFrame,text=client_receive.server_name+" : "+str(message)).place(x=5,y=0)
             i+=1
 
-# CONNECTS THE SOCKETS TO THE CORRESPONDING SEND AND RECEIVE CONNECTIONS
-def SetConnection(conn1,conn2):
-    connect={}
-    state = conn1.recv(9)
-    conn2.recv(9)
-    if state =='WILL RECV':
-        connect['send'] = conn1 # server will send data to reciever
-        connect['recv'] = conn2
-    else:
-        connect['recv'] = conn1 # server will recieve data from sender
-        connect['send'] = conn2
-    return connect
-
 # FUNCTION WHICH HELPS IN SENDING THE MESSAGE
-def message_send(conn,server_name,msg,slf):
+def message_send(conn,client_name,msg,slf):
     global i
     frame = slf.mframe
     subFrame = Frame(frame, height = 20, width = 460)
     subFrame.grid(row=i,column=0)
-    Label(subFrame,text=server_name+" : "+str(msg)).place(x=5,y=0)
+    Label(subFrame,text=client_name+" : "+str(msg)).place(x=5,y=0)
     i+=1
 
     if len(msg)<=999 and len(msg)>0:
@@ -77,7 +64,7 @@ def message_send(conn,server_name,msg,slf):
             message_send(conn,msg[1000:]) # calling recursive
 
 # INITIAL SPLASH SCREEN
-def server_initialize():
+def client_initialize():
     # Init
     l = []
     class loading(util.window):
@@ -123,7 +110,7 @@ def server_initialize():
     return l
 
 def main():
-    HOST, PORT, server_name = server_initialize()
+    HOST, PORT, client_name = client_initialize()
     class mainw(util.window):
         def __init__(self):
             self.con = None
@@ -160,27 +147,27 @@ def main():
             message_send(self.con,self.sname,msg,self)
     m = mainw()
 
-	# SOCKET OBJECT INITIALIZATION
-    socket_object = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    socket_object.bind((HOST, PORT))
-    socket_object.listen(1)
+    # SOCKET OBJECT INITIALIZATION
+    socket_object1 = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    socket_object1.connect((HOST,PORT))
 
-    # WAITING FOR CONNECTION ...
-    (conn1,addr1) = socket_object.accept()
-    (conn2,addr2) = socket_object.accept()
-    # CONNECTION ESTABLISHED !
-
-    #INITIALIZING SEND AND RECEIVE
-    connect = SetConnection(conn1,conn2)
+    # SELECTING SEND AND RECEIVE SOCKETS
+    socket_object1.send("WILL SEND") # telling server we will send data from here
+    socket_object2 = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    socket_object2.connect((HOST,PORT))
+    socket_object2.send("WILL RECV") # telling server we will recieve data from here
+    # CONNECTION ESTABLISHED
 
     # INITIALIZING SERVER AND CLIENT NAMES
-    conn2.send(server_name)
-    client_name = conn1.recv(DATA_BUFFER(1024))
-    receive = server_receive(connect['recv'],client_name,m)
+    socket_object1.send(client_name)
+    server_name = socket_object2.recv(DATA_BUFFER(1024))
+    receive = client_receive(socket_object2,server_name,m)
+
+    # RECEIVE THREAD STARTS HERE
     receive.start()
 
-    m.con = connect['send']
-    m.sname = server_name
+    m.con = socket_object1
+    m.sname = client_name
     
     m.root.mainloop()
 

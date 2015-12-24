@@ -1,0 +1,59 @@
+Tue Dec  1 01:52:47 2015 || Aditya : Hi bro
+Tue Dec  1 01:52:49 2015 || Aditya : Sup ??
+Tue Dec  1 01:52:52 2015 || Aditya : How are you ?
+Tue Dec  1 01:52:55 2015 || Kishore : HEy dude!
+Tue Dec  1 01:53:00 2015 || Kishore : I'm fine!
+Tue Dec  1 01:53:08 2015 || Kishore : How's college ?
+Tue Dec  1 01:53:15 2015 || Aditya : College is good!
+Tue Dec  1 01:53:28 2015 || Aditya : It's IIIT B ,...needless to say
+Tue Dec  1 01:53:33 2015 || Kishore : LOL! True that!!
+Tue Dec  1 01:53:38 2015 || Kishore : Bye bro!
+Tue Dec  1 01:53:42 2015 || Aditya : Byeee
+Tue Dec  1 01:53:42 2015 || Aditya : 
+Tue Dec  1 02:00:30 2015 || Aditya : Hey
+Tue Dec  1 02:00:33 2015 || Aditya : Sup ??
+Tue Dec  1 02:00:43 2015 || Aditya : How did math exam go about ?
+Tue Dec  1 02:00:45 2015 || Kishore : Pretty bad!
+Tue Dec  1 02:00:51 2015 || Kishore : Yeah,....ikr!
+Tue Dec  1 02:01:01 2015 || Aditya : SAme here!!
+Tue Dec  1 02:01:16 2015 || Aditya : Tommo we have to submit python write ?
+Tue Dec  1 02:11:04 2015 || Aditya : Hey
+Tue Dec  1 02:11:17 2015 || Aditya : Sup ??
+Tue Dec  1 02:11:24 2015 || Kishore : Hi
+Tue Dec  1 02:11:28 2015 || Kishore : I'm vetti
+Tue Dec  1 02:15:58 2015 || Aditya : 
+Tue Dec  1 02:17:33 2015 || Aditya : Hi bro
+Tue Dec  1 02:17:35 2015 || Aditya : Sup ?
+Tue Dec  1 02:17:39 2015 || Aditya : How are you ?
+Tue Dec  1 02:17:41 2015 || Kishore : HEyy
+Tue Dec  1 02:17:44 2015 || Kishore : I'mm fine
+Tue Dec  1 02:17:49 2015 || Aditya : 
+Tue Dec  1 02:21:16 2015 || Aditya : HEy
+Tue Dec  1 02:21:20 2015 || Aditya : sUP ?
+Tue Dec  1 02:21:25 2015 || Kishore : How are you ?
+Tue Dec  1 02:21:27 2015 || Aditya : 
+Tue Dec  1 02:23:27 2015 || Kishore : Hey
+Tue Dec  1 02:23:33 2015 || Kishore : Sup ?
+Tue Dec  1 02:23:42 2015 || Aditya : How are you ?
+Tue Dec  1 02:23:42 2015 || Aditya : 
+Tue Dec  1 02:25:18 2015 || Aditya : Hey!
+Tue Dec  1 02:25:22 2015 || Aditya : Sup ??
+Tue Dec  1 02:25:23 2015 || Kishore : Hii
+Tue Dec  1 02:25:26 2015 || Kishore : How are you ?
+Tue Dec  1 02:25:33 2015 || Aditya : I'm fine !
+Tue Dec  1 02:25:37 2015 || Kishore : So am i :)
+Tue Dec  1 02:25:48 2015 || Aditya : Nice to hear,...
+Tue Dec  1 02:25:58 2015 || Aditya : Tommo we have math exam right ??
+Tue Dec  1 02:25:59 2015 || Kishore : Yeah,...
+Tue Dec  1 02:26:03 2015 || Kishore : We have
+Tue Dec  1 02:26:37 2015 || Kishore : asd
+Tue Dec  1 02:26:38 2015 || Kishore : adasd
+Tue Dec  1 02:28:26 2015 || Aditya : HEy
+Tue Dec  1 02:28:28 2015 || Aditya : Sup /
+Tue Dec  1 02:28:30 2015 || Kishore : Bye
+Tue Dec  1 02:28:33 2015 || Aditya : bii
+Tue Dec  1 02:28:35 2015 || Aditya : 
+Tue Dec  1 02:36:38 2015 || Aditya : Hey!!
+Tue Dec  1 02:36:43 2015 || Kishore : How are you ?
+Tue Dec  1 02:36:56 2015 || Aditya : I'm fine!
+Tue Dec  1 02:37:01 2015 || Aditya : 
